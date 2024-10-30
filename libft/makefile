@@ -2,10 +2,10 @@
 CC = cc
 
 #define compile flags
-CFLAGS = -Wall -Wextra -Werror -std=c99
+CFLAGS = -Wall -Wextra -Werror 
 
 #list all the files using ssources
-SOURCES = main.c ft_isalpha.c ft_isdigit.c ft_isalnum.c
+SOURCES = main.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_tolower.c ft_toupper.c
 
 #
 OBJECTS = $(SOURCES:.c=.o)
