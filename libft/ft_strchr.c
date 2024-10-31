@@ -1,36 +1,19 @@
-#include <string.h>
-#include <stdio.h>
-char*	ft_strchr(const char *string, int c)
+char*	ft_strchr(const char *str, int c)
 {
 	int	i;
-	char	*object;
-	int	j;
-	
+	void*	match;
+
 	i = 0;
-	j = 0;
-	while (string[i] != '\0')
+	match = 0;
+	while(str[i] != '\0')
 	{
-		if (string[i] == c)
+		if (str[i] == c)
 		{
-			while(string[i] != '\0')
-			{
-				object[j] = string[i];
-				i++;
-				j++;
-			}
-			return (object);
+			match = (char *)&str[i];
+			break;
 		}
-		i++;
+		else
+			i++;
 	}
-	return(NULL);
-}
-
-int main(void)
-{
-	const char* string = "Hello";
-	int c = 'l';
-	printf("return value my func: %s \n", ft_strchr(string, c));
-	printf("return value my func: %s \n", strchr(string, c));
-
-
+	return ((char *)match);
 }

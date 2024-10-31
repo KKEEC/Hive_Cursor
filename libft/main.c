@@ -44,6 +44,21 @@ int main(void)
                 printf("toupper return value: %c \n", toupper('X'));
                 printf("ft_toupper return value: %c \n", ft_toupper('a'));
                 printf("toupper return value: %c \n", toupper('a'));
+	// ft_strchr test
+		const char* string = "Hello";
+    		int c = 'z';
+		int x = 'l';
+   		printf("return value my func: %s \n", ft_strchr(string, c));
+    		printf("return value inbuilt func: %s \n", strchr(string, c));
+		printf("return value my func: %s \n", ft_strchr(string, x));
+                printf("return value inbuilt func: %s \n", strchr(string, x));
+	// ft_strrchr test
+                printf("return value my func: %s \n", ft_strrchr(string, c));
+                printf("return value inbuilt func: %s \n", strrchr(string, c));
+                printf("return value my func: %s \n", ft_strrchr(string, x));
+                printf("return value inbuilt func: %s \n", strrchr(string, x));
+
+    		return (0);
 
 
 }

@@ -70,6 +70,57 @@ int    ft_tolower(int c)
                 return (c);
 }
 
+char*	ft_strchr(const char *str, int c)
+{
+	int	i;
+	void*	match;
+
+	i = 0;
+	match = 0;
+	while(str[i] != '\0')
+	{
+		if (str[i] == c)
+		{
+			match = (char *)&str[i];
+			break;
+		}
+		else
+			i++;
+	}
+	return ((char *)match);
+}
+
+static int sft_strlen(const char* string)
+{
+	int	i;
+
+	i = 0;
+	while (string[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+char*	ft_strrchr(const char *str, int c)
+{
+	int	j;
+	void*	match;
+
+	j = sft_strlen(str) - 1;
+	match = 0;
+	while (str[j] >= 0)
+	{
+		if (str[j] == c)
+		{
+			match = (char *)&str[j];
+			break;
+		}
+		else
+			j--;
+	}
+	return ((char *)match);
+}
+
 
 
 
@@ -109,5 +160,20 @@ int main(void)
 		printf("tolower return value: %c \n", tolower('X'));
 		printf("ft_tolower return value: %c \n", ft_tolower('o'));
 		printf("tolower return value: %c \n", tolower('o'));
+	// ft_strchr test
+		const char* string = "Hello";
+		int a = 'x';
+		int b = 'e';
+    		printf("return value my func: %s \n", ft_strchr(string, a));
+    		printf("return value inbuilt func: %s \n", strchr(string, a));
+		printf("return value my func: %s \n", ft_strchr(string, b));
+                printf("return value inbuilt func: %s \n", strchr(string, b));
+	// ft_strrchr test
+		printf("return value my func: %s \n", ft_strrchr(string, a));
+                printf("return value inbuilt func: %s \n", strrchr(string, a));
+                printf("return value my func: %s \n", ft_strrchr(string, b));
+                printf("return value inbuilt func: %s \n", strrchr(string, b));
+
+
 
 }
