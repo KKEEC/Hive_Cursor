@@ -58,6 +58,21 @@ int main(void)
                 printf("return value my func: %s \n", ft_strrchr(string, x));
                 printf("return value inbuilt func: %s \n", strrchr(string, x));
 
+	// strncmp test
+		char str1[20] = "";
+		char str2[20] = "";
+		char str3[3] = "";
+		unsigned int size = 5;
+		unsigned int size1 = 7;
+
+		printf("return value of myfunc: %d \n", ft_strncmp(str1, str2, size));
+		printf("return value of strncmp func: %d \n", strncmp(str1, str2, size));
+		printf("return value of myfunc: %d \n", ft_strncmp(str1, str2, size1));
+                printf("return value of strncmp func: %d \n", strncmp(str1, str2, size1));
+		printf("return value of myfunc: %d \n", ft_strncmp(str1, str3, size));
+                printf("return value of strncmp func: %d \n", strncmp(str1, str3, size));
+
+
     		return (0);
 
 

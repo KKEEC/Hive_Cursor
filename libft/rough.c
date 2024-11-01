@@ -1,44 +1,28 @@
 #include <string.h>
 #include <stdio.h>
-static int ft_strlen(const char* string)
+
+void*	ft_memset (void *block, int c, size_t size)
 {
-	int	i;
-
-	i = 0;
-	while (string[i] != '\0')
+	char *	cptr;
+	cptr = (char *)block;
+	
+	while (size > 0)
 	{
-		i++;
+		cptr[size - 1] =  c;
+		size--;
 	}
-	return (i);
+	return (block);
 }
-char*	ft_strrchr(const char *str, int c)
-{
-	int	i;
-	void*	match;
-
-	i = ft_strlen(str) - 1;
-	match = 0;
-	while (str[i] >= 0)
-	{
-		if (str[i] == c)
-		{
-			match = (char *)&str[i];
-			break;
-		}
-		else
-			i--;
-	}
-	return ((char *)match);
-}
-
 
 int main(void)
 {
-    const char* string = "Hello";
-    int c = 'l';
-    int b = 'h';
-    printf("return value my func: %s \n", ft_strrchr(string, c));
-    printf("return value inbuilt func: %s \n", strrchr(string, c));
+	char ft_str[];
+	char str[];
 
+	ft_memset(ft_str, 'y', 2);
+	memset(str, 'y', 2);
+
+	printf("return value of my ft_memset func: %c %c %c %c \n", ft_str[0], ft_str[1], ft_str[2], ft_str[3]);
+	printf("return value of memset: %c %c %c %c \n", str[0] , str[1], str[2], str[3]);
 	return (0);
 }

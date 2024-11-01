@@ -121,6 +121,22 @@ char*	ft_strrchr(const char *str, int c)
 	return ((char *)match);
 }
 
+int     ft_strncmp (const char *s1, const char *s2, unsigned int size)
+{
+        unsigned int    i;
+
+        i = 0;
+        while ((s1[i] || s2[i]) && i < size)
+        {
+                if(s1[i] == s2[i])
+                        i++;
+                else
+                        return (s1[i] - s2[i]);
+        }
+        return (0);
+}
+
+
 
 
 
@@ -174,6 +190,19 @@ int main(void)
                 printf("return value my func: %s \n", ft_strrchr(string, b));
                 printf("return value inbuilt func: %s \n", strrchr(string, b));
 
+	// strncmp test
+                char str1[20] = "";
+                char str2[20] = "";
+                char str3[3] = "";
+                unsigned int size = 5;
+                unsigned int size1 = 7;
+
+                printf("return value of myfunc: %d \n", ft_strncmp(str1, str2, size));
+                printf("return value of strncmp func: %d \n", strncmp(str1, str2, size));
+                printf("return value of myfunc: %d \n", ft_strncmp(str1, str2, size1));
+                printf("return value of strncmp func: %d \n", strncmp(str1, str2, size1));
+                printf("return value of myfunc: %d \n", ft_strncmp(str1, str3, size));
+                printf("return value of strncmp func: %d \n", strncmp(str1, str3, size));
 
 
 }
