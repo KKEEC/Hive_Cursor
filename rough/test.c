@@ -90,6 +90,8 @@ char*	ft_strchr(const char *str, int c)
 	return ((char *)match);
 }
 
+//ft_strchr
+
 static int sft_strlen(const char* string)
 {
 	int	i;
@@ -101,6 +103,9 @@ static int sft_strlen(const char* string)
 	}
 	return (i);
 }
+
+
+
 char*	ft_strrchr(const char *str, int c)
 {
 	int	j;
@@ -120,6 +125,7 @@ char*	ft_strrchr(const char *str, int c)
 	}
 	return ((char *)match);
 }
+//ft_strncmp
 
 int     ft_strncmp (const char *s1, const char *s2, unsigned int size)
 {
@@ -136,7 +142,23 @@ int     ft_strncmp (const char *s1, const char *s2, unsigned int size)
         return (0);
 }
 
+// ft_memset
+void*	ft_memset (void *block, int c, unsigned int size)
+{
+	unsigned char	*cptr;
+	unsigned char	key;
+	unsigned int	i;
 
+	cptr = (unsigned char *)block;
+	key = (unsigned char)c;
+	i = 0;
+	while (i < size)
+	{
+		cptr[i] =  key;
+		i++;
+	}
+	return (block);
+}
 
 
 
@@ -205,4 +227,27 @@ int main(void)
                 printf("return value of strncmp func: %d \n", strncmp(str1, str3, size));
 
 
+	//ft_memset test
+		unsigned int s = 10;
+		unsigned char ft_str[s];
+		unsigned char stri[s];
+		unsigned int times = 7;
+
+		ft_memset(ft_str, 'y', times);
+		memset(stri, 'y', times);
+
+		printf("Return value of my ft_memset function: ");
+		for (int i = 0; i < times + 1; i++) 
+		{
+			printf("%c ", ft_str[i]);
+		}
+		printf("\n");
+
+		printf("Return value of memset: ");
+		for (int i = 0; i < times + 1; i++) 
+		{
+			printf("%c ", stri[i]);
+		}
+		printf("\n");
+	return (0);
 }
