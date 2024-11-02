@@ -95,8 +95,101 @@ int main(void)
                 }
                 printf("\n");
 
-    		return (0);
 
+	//ft_bzero test
+		char	cptr[20];
+		char	tptr[20];
+		unsigned int	x1 = 10;
+		unsigned int	i = 0;
+		ft_bzero(cptr, x1);
+		printf("my bzero test \n");
+		while (i < x1)
+		{
+			printf("element in position %u : %d \n", i, cptr[i]);
+			i++;
+		}
+		i = 0;
+		bzero(tptr, x1);
+		printf("native bzero test \n");
+		while (i < x1)
+		{
+			printf("element in position %u : %d \n", i, tptr[i]);
+        	        i++;
+		}
+	//ft_memchr test
+		const void *src = "Helloworld";
+		int find = 'w';
+		unsigned int findin = 6;
+		unsigned int findin1 = 5;
 
+		printf("the return value of my func is: %p \n", ft_memchr(src, find , findin));
+		printf("the return value of memchr is: %p \n", memchr(src, find , findin));
+		printf("the return value of my func is: %p \n", ft_memchr(src, c , findin1));
+		printf("the return value of memchr func is: %p \n", memchr(src, c , findin1));
+	
+	//ft_memcpy test
+		char	tofill[20] = "world";
+		char	tofillof[20] = "world";
+		const char	*fromfill = "Hello world";
+		unsigned int howmany;
+		howmany = 5;
+		unsigned int check = 0;
+		char *myfunc = (char *)ft_memcpy(tofill, fromfill, howmany);
+		char *memcp = (char *)memcpy(tofillof, fromfill, howmany);
+		printf("myfunc return value: \n" );
+		while (check < howmany)
+		{
+			printf("%dth element: %c \n", check, myfunc[check]);
+			check++;
+		}
+		printf("\n");
+		check = 0;
+		printf("memcpy func return value : \n");
+		while (check < howmany)
+		{
+		       	printf("%dth element: %c \n",check, memcp[check]);
+			check++;
+		}
+	//ft-memcmp test
+		const char	*aa = "";
+		const char	*bb = "Hello";
+		unsigned int	numtocheck = 6;
+
+		printf("my func returns: %d \n", ft_memcmp(aa, bb, numtocheck));
+		printf("native returns: %d \n", memcmp(aa, bb, numtocheck));
+
+	// ft_memmove test
+		char cpto[10] = "Hello1";
+		char cpto1[10] = "llllllllll";
+		const char cpfrom[15] = "Hello world";
+		unsigned int btocpy = 11;
+		unsigned int display = 0;
+
+		char *result = (char *)ft_memmove(cpto, cpfrom, btocpy);
+		printf("my memmove func return: \n");
+		while(display < btocpy)
+		{
+			printf("%c",result[display]);
+			display++;
+		}
+		printf("\n");
+		display = 0;
+		char *result1 = (char *)ft_memmove(cpto1, cpfrom, btocpy);
+		printf("native memmove func return: \n");
+		while(display < btocpy)
+		{
+			printf("%c",result1[display]);
+			display++;
+		}
+		printf("\n");
+
+	//ft_strlcpy test
+		char dest[20] = "Hello";
+		const char *src1 = "world! is a fun place";
+		unsigned int ui = 6;
+		printf("my strlcpy return %d \n", ft_strlcpy(dest, src1, ui));
+		printf("Resulting dest: %s\n", dest);
+
+	return (0);
 }
 
