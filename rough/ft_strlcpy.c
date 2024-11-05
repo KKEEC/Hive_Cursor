@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h>
+#include <bsd/string.h>
 static unsigned int	ft_strlen(const char *str)
 {
 	unsigned int	i;
@@ -11,10 +11,10 @@ static unsigned int	ft_strlen(const char *str)
 	return (i);
 }
 
-unsigned int	ft_strlcpy (char *to, const char *from, unsigned int size)
+size_t	ft_strlcpy (char *to, const char *from, size_t size)
 {
-	unsigned int	j;
-	unsigned int	lenfrom;
+	size_t	j;
+	size_t	lenfrom;
 	
 	lenfrom = ft_strlen(from);
 	j = 0;
@@ -36,7 +36,11 @@ int	main(void)
 	char dest1[20] = "Hello";
 	const char *src = "world! is a fun place";
 	unsigned int ui = 6;
-	printf("my strlcpy return %d \n", ft_strlcpy(dest, src, ui));
+	unsigned long ui1 = 6;
+	printf("my strlcpy return %i \n", ft_strlcpy(dest, src, ui));
 	printf("Resulting dest: %s\n", dest);
+	printf("strlcpy return %zu \n", strlcpy(dest1, src, ui1));
+        printf("Resulting dest: %s\n", dest1);
+
 }
 
