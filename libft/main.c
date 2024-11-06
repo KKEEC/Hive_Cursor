@@ -185,12 +185,12 @@ int main(void)
 
 	//ft_strlcpy test
 		char dest[20] = "Hello";
-      		char dest1[20] = "Hello";
+    //  		char dest1[20] = "Hello";
 	       	const char *sorc = "world! is a fun place";
     	   	size_t ui = 2;
 	       	printf("my strlcpy return %u \n", ft_strlcpy(dest, sorc, ui));
  	      	printf("Resulting dest: %s\n", dest);
-  //  	   	printf("strlcpy return %u \n", strlcpy(dest1, sorc, ui));
+  //	   	printf("strlcpy return %u \n", strlcpy(dest1, sorc, ui));
 //     	 	printf("Resulting dest: %s\n", dest1);
 
 	return (0);

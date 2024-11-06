@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/06 11:48:29 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/06 11:49:47 by kkc              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include<bsd/string.h>
-
 
 static unsigned int	ft_strlen(char *str)
 {
 	unsigned int	i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		i++;
 	}
 	return (i);
 }
-unsigned int	ft_strlcat (char *to, const char *from, unsigned int size)
+
+unsigned int	ft_strlcat(char *to, const char *from, unsigned int size)
 {
 	unsigned int	destl;
 	unsigned int	i;
@@ -22,7 +34,7 @@ unsigned int	ft_strlcat (char *to, const char *from, unsigned int size)
 	i = 0;
 	if (size <= destl)
 		return (size + ft_strlen(from));
-	while((from[i] != '\0') && (destl + i < size))
+	while ((from[i] != '\0') && (destl + i < size))
 	{
 		to[destl + i] = from[i];
 		i++;

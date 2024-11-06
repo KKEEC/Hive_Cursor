@@ -1,4 +1,5 @@
 #defines what compiler to use
+
 NAME = libft.a
 CC = cc
 
@@ -25,5 +26,4 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: (fclean)
-	fclean all
+re: fclean all

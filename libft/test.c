@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:04:33 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/06 11:21:04 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/06 11:19:54 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/06 11:19:58 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *block, int c, unsigned int size)
-{
-	unsigned int	i;
-	unsigned char	*ptr;
-	unsigned char	result;
-	void			*match;
+#include <stddef.h>
 
-	ptr = (unsigned char *)block;
-	i = 0;
-	match = 0;
-	result = (unsigned char)c;
-	while (i < size)
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	while (n--)
 	{
-		if (ptr[i] == result)
-		{
-			match = &ptr[i];
-			break ;
-		}
-		else
-			i++;
+		if (*(unsigned char *)s == (unsigned char)c)
+			return ((void *)s);
+		++s;
 	}
-	return (match);
+	return (0);
 }
