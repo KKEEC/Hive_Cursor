@@ -5,42 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 19:29:03 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/06 19:38:29 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/06 19:17:55 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/06 19:24:43 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static void	fwd(unsigned char *to, const unsigned char *from, unsigned int size)
+static void	*returnnull(void)
 {
-	unsigned int	i;
+	void	*n;
 
-	i = 0;
-	while (i < size)
-	{
-		to[i] = from[i];
-		i++;
-	}
+	n = 0;
+	return (n);
 }
 
-static void	bwd(unsigned char *to, const unsigned char *from, unsigned int size)
+static void	cf(unsigned char *d, const unsigned char *sc, unsigned int l, unsigned int s)
 {
-	while (size > 0)
+	if (d < sc)
 	{
-		size--;
-		to[size] = from[size];
+		while (l < s)
+		{
+			d[l] = sc[l];
+			l++;
+		}
 	}
 }
 
 void	*ft_memmove(void *to, const void *from, unsigned int size)
 {
-	void	*nul;
+	unsigned int	i;
+	unsigned char	*ptrto;
+	const unsigned char	*ptrfrom;
 
-	nul = 0;
+	i = 0;
+	ptrto = (unsigned char *)to;
+	ptrfrom = (unsigned char *)from;
 	if (!to || !from)
-		return (nul);
-	if (to < from)
-		fwd((unsigned char *)to, (const unsigned char *)from, size);
+		return (returnnull());
+/*	if (ptrto < ptrfrom)
+	{
+		while (i < size)
+		{
+			ptrto[i] = ptrfrom[i];
+			i++;
+		}
+	}*/
+	cf(ptrto, ptrfrom, i, size);
 	else
-		bwd((unsigned char *)to, (const unsigned char *)from, size);
+	{
+		i = size;
+		while (i > 0)
+		{
+			ptrto[i - 1] = ptrfrom[i -1];
+			i--;
+		}
+	}
 	return (to);
 }
