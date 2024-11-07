@@ -6,14 +6,11 @@
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:48:29 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/06 11:49:47 by kkc              ###   ########.fr       */
+/*   Updated: 2024/11/07 15:52:00 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include<bsd/string.h>
-
-static unsigned int	ft_strlen(char *str)
+static unsigned int	ft_strlen(const char *str)
 {
 	unsigned int	i;
 
@@ -28,31 +25,25 @@ static unsigned int	ft_strlen(char *str)
 unsigned int	ft_strlcat(char *to, const char *from, unsigned int size)
 {
 	unsigned int	destl;
+	unsigned int	srcl;
 	unsigned int	i;
+	unsigned int	j;
 
 	destl = ft_strlen(to);
+	srcl = ft_strlen(from);
 	i = 0;
-	if (size <= destl)
-		return (size + ft_strlen(from));
-	while ((from[i] != '\0') && (destl + i < size))
-	{
-		to[destl + i] = from[i];
-		i++;
+	j = destl;
+	if (destl < size - 1 && size > 0){
+		while (from[i] && ((destl + i) < (size - 1)))
+		{
+			to[j] = from[i];
+			i++;
+			j++;
+		}
+		to[j] = 0;
 	}
-	to[destl + i] = '\0';
-	return (destl + ft_strlen(from));
-}
-/*
-int	main(void)
-{
-	const char *src = "Hello world";
-	char dest[2] = "t";
-	char dest1[2] = "t";
-	unsigned int btc = 3;
-	ft_strlcat(dest, src, btc);
-	strlcat(dest1, src, btc);
-	printf("%s %d\n", dest, ft_strlcat(dest, src, btc));
-	printf("%s %d\n", dest1, strlcat(dest1, src, btc));
+	if (destl >= size)
+		destl = size;
 
+	return (destl + srcl);
 }
-*/

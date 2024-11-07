@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:58:21 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/07 12:58:18 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/07 15:08:31 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/07 15:24:10 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
 
-static unsigned int	ft_strlen(const char *str)
+static size_t ft_strlen(const char *str)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (str[i] != '\0')
+	while(str[i])
 	{
 		i++;
 	}
 	return (i);
 }
 
-int	ft_strlcpy(char *to, const char *from, unsigned int size)
+size_t	strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	j;
-	unsigned int	lenfrom;
+	size_t	srcl;
+	size_t	dstl;
+	size_t	i;
 
-	lenfrom = ft_strlen(from);
-	j = 0;
-	if (size > 0)
-	{
-		while (j < size - 1 && from[j] != '\0')
-		{
-			to[j] = from[j];
-			j++;
-		}
-		to[j] = '\0';
-	}
-	return ((int)lenfrom);
+	srcl = ft_strlen(src);
+	dstl = ft_strlen(dst);
+	i = 0;
+	while (size <)
 }
