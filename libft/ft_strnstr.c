@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:48:29 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/08 12:42:13 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/08 12:59:32 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/08 14:47:33 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
 
-static unsigned int	ft_strlen(const char *str)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned int	i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (big[i] != '\0')
 	{
+		j = 0;
+		while (big[i + j] == little[j] && (i + j) < len)
+		{
+			if (big[i + j] == '\0' && little[j] == '\0')
+				return ((char *)&big[i]);
+			j++;
+		}
+		if (little[j] == '\0')
+			return ((char *)big + i);
 		i++;
 	}
-	return (i);
-}
-
-unsigned int	ft_strlcat(char *to, const char *from, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	j;
-
-	i = 0;
-	j = 0;
-	while (i < size && to[i])
-		i++;
-	while ((i + j + 1) < size && from[j])
-	{
-		to[i + j] = from[j];
-		j++;
-	}
-	if (i != size)
-		to[i + j] = '\0';
-	return (i + ft_strlen(from));
+	return (0);
 }

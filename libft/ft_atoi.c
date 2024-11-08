@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:48:29 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/08 12:42:13 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/08 10:41:39 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/08 12:55:28 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static unsigned int	ft_strlen(const char *str)
+int	ft_atoi(const char *str)
 {
-	unsigned int	i;
+	int	nbr;
+	int	neg;
+	int	i;
 
+	nbr = 0;
+	neg = 1;
 	i = 0;
-	while (str[i] != '\0')
+	while ((str[i] == ' ') || ((str[i] >= 9 && str[i] <= 13)))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
+		if (str[i] == '-')
+			neg *= -1;
 		i++;
 	}
-	return (i);
-}
-
-unsigned int	ft_strlcat(char *to, const char *from, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	j;
-
-	i = 0;
-	j = 0;
-	while (i < size && to[i])
-		i++;
-	while ((i + j + 1) < size && from[j])
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		to[i + j] = from[j];
-		j++;
+		nbr = nbr * 10 + (str[i] - 48);
+		i++;
 	}
-	if (i != size)
-		to[i + j] = '\0';
-	return (i + ft_strlen(from));
+	return (nbr * neg);
 }

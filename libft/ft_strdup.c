@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:48:29 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/08 12:42:13 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/08 15:14:31 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/08 15:27:37 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-static unsigned int	ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
-	{
+	while (str[i])
 		i++;
-	}
 	return (i);
 }
 
-unsigned int	ft_strlcat(char *to, const char *from, unsigned int size)
+char	*ft_strdup(const char *s)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int		len;
+	char	*dup;
+	int		i;
 
+	len = ft_strlen(s);
+	dup = malloc(len + 1);
 	i = 0;
-	j = 0;
-	while (i < size && to[i])
-		i++;
-	while ((i + j + 1) < size && from[j])
+	if (dup == NULL)
+		return (NULL);
+	while (i < len)
 	{
-		to[i + j] = from[j];
-		j++;
+		dup[i] = s[i];
+		i++;
 	}
-	if (i != size)
-		to[i + j] = '\0';
-	return (i + ft_strlen(from));
+	dup[i] = '\0';
+	return (dup);
 }
