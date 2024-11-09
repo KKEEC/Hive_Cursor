@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:19:54 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/06 11:19:58 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/09 10:43:50 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/09 11:22:31 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include <stddef.h>
-
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	while (n--)
+	char	*sstr;
+	size_t	i;
+
+	sstr = malloc(len * sizeof(char) + 1);
+	if (!sstr)
+		return (NULL);
+	i = 0;
+	while (s[i] && i < len)
 	{
-		if (*(unsigned char *)s == (unsigned char)c)
-			return ((void *)s);
-		++s;
+		sstr[i] = s[(size_t)start];
+		i++;
+		start++;
 	}
-	return (0);
+	sstr[i] = '\0';
+	return (sstr);
 }

@@ -6,7 +6,7 @@
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 12:19:23 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/08 15:26:17 by kkc              ###   ########.fr       */
+/*   Updated: 2024/11/09 15:33:27 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int	ft_strlcat(char *to, const char *from, unsigned int size);
 int	ft_atoi(const char *str);
 char    *ft_strnstr(const char *big, const char *little, unsigned int len);
 char	*ft_strdup(const char *s);
-
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif

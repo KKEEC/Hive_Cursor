@@ -20,10 +20,10 @@ void	*ft_memmove(void *to, const void *from, unsigned int size)
 
 int	main(void)
 {
-	char cpto[10] = "Hello1";
-	char cpto1[10] = "llllllllll";
-	const char cpfrom[15] = "Hello world";
-	unsigned int btocpy = 11;
+	char cpto[10] = "old stuff";
+	char cpto1[10] = "old stuff";
+	const char cpfrom[15] = "make it dude";
+	unsigned int btocpy = 10;
 	unsigned int display = 0;
 
 	char *result = (char *)ft_memmove(cpto, cpfrom, btocpy);
@@ -35,7 +35,7 @@ int	main(void)
 	}
 	printf("\n");
 	display = 0;
-	char *result1 = (char *)ft_memmove(cpto1, cpfrom, btocpy);
+	char *result1 = (char *)memmove(cpto1, cpfrom, btocpy);
         printf("native memmove func return: \n");
         while(display < btocpy)
         {
@@ -43,6 +43,7 @@ int	main(void)
                 display++;
         }
 	printf("\n");
+	printf("%s \n %s", cpto, cpto1);
 
 
 }
