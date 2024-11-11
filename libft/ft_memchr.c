@@ -9,10 +9,11 @@
 /*   Updated: 2024/11/06 11:21:04 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	*ft_memchr(const void *block, int c, unsigned int size)
+void	*ft_memchr(const void *block, int c, size_t size)
 {
-	unsigned int	i;
+	size_t	i;
 	unsigned char	*ptr;
 	unsigned char	result;
 	void			*match;

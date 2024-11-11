@@ -9,10 +9,11 @@
 /*   Updated: 2024/11/06 12:07:50 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	*ft_memcpy(void *to, const void *from, unsigned int size)
+void	*ft_memcpy(void *to, const void *from, size_t size)
 {
-	unsigned int	i;
+	size_t	i;
 	char			*dest;
 	char			*src;
 

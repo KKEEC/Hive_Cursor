@@ -10,19 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *block, int c, unsigned int size)
+#include "libft.h"
+void	*ft_memset(void *block, int c, size_t size)
 {
 	unsigned char	*cptr;
 	unsigned char	key;
-	unsigned int	i;
 
 	cptr = (unsigned char *)block;
 	key = (unsigned char)c;
-	i = 0;
-	while (i < size)
+	while (size--)
 	{
-		cptr[i] = key;
-		i++;
+		*cptr = key;
+		cptr++;
 	}
 	return (block);
 }

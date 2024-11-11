@@ -10,33 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static unsigned int	ft_strlen(const char *str)
-{
-	unsigned int	i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-unsigned int	ft_strlcat(char *to, const char *from, unsigned int size)
+size_t	ft_strlcat(char *to, const char *from, size_t size)
 {
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
+	size_t	j;
+	size_t	fromlen;
+	size_t	tolen;
 
 	i = 0;
 	j = 0;
-	while (i < size && to[i])
+	fromlen = ft_strlen(from);
+	tolen = ft_strlen(to);
+
+	if (size == 0)
+		return (fromlen);
+	while (to[i] && i < size)
 		i++;
-	while ((i + j + 1) < size && from[j])
+	if (i == size)
+		return (size + fromlen);
+	while (from[j] && (i + j + 1) < size)
 	{
 		to[i + j] = from[j];
 		j++;
 	}
-	if (i != size)
+	if (i + j < size)
 		to[i + j] = '\0';
-	return (i + ft_strlen(from));
+	return (tolen + fromlen);
 }
