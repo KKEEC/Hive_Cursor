@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:56:43 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/12 09:24:53 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/13 17:07:36 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/13 19:15:01 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *block, int c, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned char	*cptr;
-	unsigned char	key;
+	unsigned int	nbr;
 
-	cptr = (unsigned char *)block;
-	key = (unsigned char)c;
-	while (size--)
+	if (n == -2147483648)
 	{
-		*cptr = key;
-		cptr++;
+		ft_putchar_fd('-', fd);
+		ft_putchar_fd('2', fd);
+		n = 147483648;
 	}
-	return (block);
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	nbr = (unsigned int)n;
+	if (n > 9)
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+		ft_putnbr_fd(nbr % 10, fd);
+	}
+	if (n < 10)
+	{
+		ft_putchar_fd(nbr + '0', fd);
+	}
 }

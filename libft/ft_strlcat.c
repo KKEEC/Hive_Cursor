@@ -6,7 +6,7 @@
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:48:29 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/08 12:42:13 by kkc              ###   ########.fr       */
+/*   Updated: 2024/11/12 09:33:10 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ size_t	ft_strlcat(char *to, const char *from, size_t size)
 	j = 0;
 	fromlen = ft_strlen(from);
 	tolen = ft_strlen(to);
-
 	if (size == 0)
 		return (fromlen);
 	while (to[i] && i < size)

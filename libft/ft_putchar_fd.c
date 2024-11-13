@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:56:43 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/12 09:24:53 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/12 16:07:20 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/13 16:41:47 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
 
-void	*ft_memset(void *block, int c, size_t size)
+void	ft_putchar_fd(char c, int fd)
 {
-	unsigned char	*cptr;
-	unsigned char	key;
-
-	cptr = (unsigned char *)block;
-	key = (unsigned char)c;
-	while (size--)
-	{
-		*cptr = key;
-		cptr++;
-	}
-	return (block);
+	write(fd, &c, 1);
 }

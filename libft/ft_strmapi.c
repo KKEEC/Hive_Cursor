@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 11:56:43 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/12 09:24:53 by kkc              ###   ########.fr       */
+/*   Created: 2024/11/12 15:48:51 by kkc               #+#    #+#             */
+/*   Updated: 2024/11/13 14:40:37 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *block, int c, size_t size)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned char	*cptr;
-	unsigned char	key;
+	char	*result;
+	int		i;
 
-	cptr = (unsigned char *)block;
-	key = (unsigned char)c;
-	while (size--)
+	i = 0;
+	result = ft_strdup(s);
+	while (result[i])
 	{
-		*cptr = key;
-		cptr++;
+		result[i] = f(i, result[i]);
+		i++;
 	}
-	return (block);
+	return (result);
 }
