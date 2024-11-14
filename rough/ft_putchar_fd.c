@@ -6,7 +6,7 @@
 /*   By: kkc <kkc@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:07:20 by kkc               #+#    #+#             */
-/*   Updated: 2024/11/13 16:39:16 by kkc              ###   ########.fr       */
+/*   Updated: 2024/11/14 18:59:53 by kkc              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	ft_putchar_fd(char c, int fd)
 
 int main()
 {
-	int fd;
 
-	fd = open("test.txt", O_WRONLY | O_CREAT);
-	if (fd == -1)
-		return (1);
-	ft_putchar_fd('x', fd);
-	close(fd);
-	return(0);
+         int fd; 
+	 fd = open("mytest.txt", O_WRONLY | O_TRUNC | O_CREAT, 777);
+	 if (fd == -1)
+		 return (1);
+         ft_putchar_fd('x', fd);
+
+	 close(fd);
 }

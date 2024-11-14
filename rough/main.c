@@ -2,14 +2,16 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <bsd/string.h>
+#include <fcntl.h>
 
 int main(void)
 {
         //ft_alpha test
                 printf("ft_isalpha return value: %d \n", ft_isalpha('A'));
                 printf("isalpha return value: %d \n", isalpha('A'));
-                printf("ft_isalpha return value: %d \n", ft_isalpha('1'));
-                printf("isalpha return value: %d \n", isalpha('1'));
+                printf("ft_isalpha return value: %d \n", ft_isalpha('3'));
+                printf("isalpha return value: %d \n", isalpha('3'));
         //ft_digit test
                 printf("ft_isdigit return value: %d \n", ft_isdigit('A'));
                 printf("isdigit return value: %d \n", isdigit('A'));
@@ -119,13 +121,13 @@ int main(void)
 	//ft_memchr test
 		const void *src = "Helloworld";
 		int find = 'w';
-		unsigned int findin = 6;
-		unsigned int findin1 = 5;
+		unsigned int findini6 = 6;
+		unsigned int findin5 = 5;
 
-		printf("the return value of my func is: %p \n", ft_memchr(src, find , findin));
-		printf("the return value of memchr is: %p \n", memchr(src, find , findin));
-		printf("the return value of my func is: %p \n", ft_memchr(src, c , findin1));
-		printf("the return value of memchr func is: %p \n", memchr(src, c , findin1));
+		printf("the return value of my func is: %p \n", ft_memchr(src, find , findin6));
+		printf("the return value of memchr is: %p \n", memchr(src, find , findin6));
+		printf("the return value of my func is: %p \n", ft_memchr(src, c , findin5));
+		printf("the return value of memchr func is: %p \n", memchr(src, c , findin5));
 	
 	//ft_memcpy test
 		char	tofill[20] = "world";
@@ -192,6 +194,163 @@ int main(void)
  	      	printf("Resulting dest: %s\n", dest);
   //  	   	printf("strlcpy return %u \n", strlcpy(dest1, sorc, ui));
 //     	 	printf("Resulting dest: %s\n", dest1);
+	
+
+	//strlcat test
+		char strdest[20] = "Hello";
+		char strdest1[20] = "Hello";
+		const char *sourcelcat = "whats your name?";
+		size_t tcpy = 5;
+		printf("my strlcat return %u and dest string: %s\n", ft_strlcat(strdest, sourcelcat, tcpy), strdest);
+		printf("my strlcat return %u and dest string: %s\n", strlcat(strdest1, sourcelcat, tcpy), strdest1);
+	
+	//ft_atoi test
+		const char *mixedstr = "hello-1234";
+		const char *teststring = "12345abc-2";
+		printf("My ft_atoi returns: %d when  %s is passed\n", ft_atoi(mixedstr), mixedstr);
+		printf("My ft_atoi returns: %d when  %s is passed\n", atoi(mixedstr), mixedstr);
+		printf("My ft_atoi returns: %d when  %s is passed\n", ft_atoi(teststring), teststring);
+                printf("My ft_atoi returns: %d when  %s is passed\n", atoi(teststring), teststring);
+	//ft_strnstr test
+		printf("ft_strnstr\n Locates a substring in a string and returns a pointer to the first character of match\n");
+		const char *largestr = "HEl Lo Live";
+		const char *smallstr = "Lo";
+		size_t searchlen = 7;
+	       printf("my ft_strnstr return %s\n", ft_strnstr(largestr, smallstr, searchlen));
+	       printf("Native strnstr return %s\n", strnstr(largestr, smallstr, searchlen));
+	//ft_strdup
+		printf("ft_strdup\n Duplicates passed string and allocates memory then returns pointer to new string\n");
+		const char *duplicatethis = "duplicate this";
+		const char *duplicatethat = "";
+		
+		char *catedstr = ft_strdup(duplicatethis);
+		char *catedstr1 = strdup(duplicatethis);
+		printf("My ft_strdup returns: %s is when %s is passed\n", ft_strdup(duplicatethis), duplicatethis);
+                printf("Native strdup returns: %s is when %s is passed\n", strdup(duplicatethis), duplicatethis);
+                printf("My ft_strdup returns: %s when  %s is passed\n", ft_strdup(duplicatethat), duplicatethat);
+                printf("My strdup returns: %s when  %s is passed\n", strdup(duplicatethat), duplicatethat);
+		free(catedstr);
+		free(catedstr1);
+
+	//ft_calloc 
+		printf("\nft_calloc\n allocates memory for nmemb elements eaach of size bytes\n and sets it to 0 using memset");
+		char *calstr;
+		char *mycalstr;
+		size_t nmemb = 5;
+		size_t size = 6;
+		size_t	i = 0;
+
+		calstr = calloc(nmemb, size);
+		mycalstr = ft_calloc(nmemb, sie);
+		while (i <= size)
+		{
+			printf("native calloc: %c", calstr);
+			i++;
+		}
+		i = 0;
+		while (i <= size)
+                {
+                        printf("my calloc: %c", calstr);
+                        i++;
+                }
+
+		free(mycalstr);
+		free(calstr);
+	//ft_substr
+		printf("\n Allocates with malloc and returns substring from string with index starting at start and until size len\n");
+		char const *string = "Hello this is the result";
+		char const *empty = "";
+		char *substr;
+		char *emtysrc;
+
+		substr = ft_substr(string, 6, 5);
+		emtysrc = ft_substr(string, 0, 5);
+		printf("substring from source : %s is : %s \n",string, substr);
+		printf("substring from source : %s is : %s \n", empty, emtysrc);
+
+		free(substr);
+		free(emtysrc);
+	// ft_strjoin
+		printf("\n joins two string passed as a parameter and returns a new string with malloc\n");
+		char const source1 = "hELLO";
+		char const source2 = " WORLD";
+		char const mtysrc = "";
+
+		char *results1s2 = ft_strjoin(source1, source2);
+		char *resultmty = ft_strjoin(source1, mtysrc);
+		printf("%s and %s passed in my function returns: %s", source1, source2, results1s2);
+		printf("%s and %s passed in my function returns: %s", source1, mtysrc, resultmty);
+		free(results1s2);
+		free(resultmty);
+
+	// ft_strtrim 
+		printf("ft_strtrim\n string to be trimmed and set of characters are passed:\n removes the set from the beginning and end of string");
+		char *newcontainer;
+		char const *trimthis = "abcHelloworldabc";
+		char const *set = "abc";
+
+		newcontainer = ft_strtrim(trimthis, set);
+
+		printf("\nresult after set is trimmed: %s \n", newcontainer);
+		free(newcontainer);
+	//ft_itoa
+		printf("\n integer to ascii, allocates and returns a string representation of passed integer\n");
+		int	minint = ft_itoa(-2147483648);
+		printf("when int_min  -2147483648 is passed: %s", ft_itoa(minint));
+		int zero = ft_itoa(0);
+		printf("when zero  0 is passed: %s", ft_itoa(zero));
+		int maxint = ft_itoa(2147483647);
+		printf("when max integer value  2147483647 is passed: %s", ft_itoa(maxint));
+		free(minint);
+		free(zero);
+		free(maxint);
+	//ft_split
+		printf("\n ft_split splits the string into substrings from the delimiter c \n");
+
+		char const	*source = "this@is@a@string@to@split";
+		char c = '@';
+		char **strings = ft_split(source, c);
+		int i = 0;
+		while (*strings[i])
+		{
+			printf("%s \n",strings[i]);
+			i++;
+			free(string[i]);
+		}
+		free(strings);
+		
+	//ft_strmapi
+		char assciireducer(unsigned int i, char c)
+		{
+			i = 1;
+			c = c - i;
+			return (c);
+		}
+
+		printf("\n applies the function f on each character of string passed as args");
+		char *string = "HELLO";
+		char *resultstrmapi = ft_strmapi(string, char (*asciireducer)(unsigned int, char));
+		free(resultstrmapi);
+	//ft_striteri
+		void	iterate(unsigned int x, char *c)
+		{
+		}
+		printf("\n applies function f on each char os str passed as args\n");
+		char *s = "Hello";
+		ft_striteri(s, void (*iterate)(unsigned int, char *))	
+		
+	//ft_putchar_fd
+		int fd;
+	        fd = open("mytest.txt", O_WRONLY | O_TRUNC | O_CREAT, 777);
+       		if (fd == -1)
+                	return (1);
+         	ft_putchar_fd('x', fd);
+		close(fd);
+
+	//ft_putstr_fd
+		int
+		
+
 
 	return (0);
 }
